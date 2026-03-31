@@ -49,6 +49,19 @@ export const createMovie = (movieData) => {
   return { id: newId, ...movies[newId] };
 };
 
+// Update movie
+export const updateMovie = (id, updatedData) => {
+  if (!movies[id]) return null;
+
+  movies[id] = {
+    ...movies[id],
+    ...updatedData,
+  };
+
+  writeData(movies);
+  return { id, ...movies[id] };
+};
+
 
 
 // ESOC
