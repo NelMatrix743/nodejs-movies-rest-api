@@ -9,17 +9,135 @@ import {
 
 const router = express.Router();
 
-// GET Requests
+
+/**
+ * @swagger
+ * /api/movies:
+ *   get:
+ *     summary: Get all movie metadata
+ *     description: Retrieve all movies with optional filtering and pagination
+ *     parameters:
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: genre
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: number
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: number
+ *     responses:
+ *       200:
+ *         description: List of movies
+ */
 router.get("/", controller.getMovies);
+
+/**
+ * @swagger
+ * /api/movies/{id}:
+ *   get:
+ *     summary: Get movie metadata by ID
+ *     description: Retrieve a single movie metadata using its ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Movie found
+ *       404:
+ *         description: Movie not found
+ */
 router.get("/:id", controller.getMovie);
 
-// POST Requests (apply validation middleware)
+/**
+ * @swagger
+ * /api/movies:
+ *   post:
+ *     summary: Create new movie metadata
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               release_year:
+ *                 type: number
+ *               age_certification:
+ *                 type: string
+ *               runtime:
+ *                 type: number
+ *               genres:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               production_countries:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               seasons:
+ *                 type: string
+ *               imdb_score:
+ *                 type: number
+ *               imdb_votes:
+ *                 type: number
+ *     responses:
+ *       201:
+ *         description: Movie created
+ */
 router.post("/", validate(createMovieSchema), controller.createMovie);
 
-// UPDATE Requests (apply validation middleware)
+
+/**
+ * @swagger
+ * /api/movies/{id}:
+ *   put:
+ *     summary: Update a movie
+ *     description: Update an already existing movie metadata
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Movie updated
+ *       404:
+ *         description: Movie not found
+ */
 router.put("/:id", validate(updateMovieSchema), controller.updateMovie);
 
-// DELETE Requests
+
+/**
+ * @swagger
+ * /api/movies/{id}:
+ *   delete:
+ *     summary: Delete movie metadata
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Movie deleted successfully
+ *       404:
+ *         description: Movie not found
+ */
 router.delete("/:id", controller.deleteMovie);
 
 export default router;
