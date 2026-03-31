@@ -19,11 +19,14 @@ export const getMovies = (req, res) => {
   const { search, genre, page = 1, limit = 10 } = req.query;
 
   // search by title
-  if (search) {
-    movies = movies.filter((m) =>
-      m.title.toLowerCase().includes(search.toLowerCase())
-    );
-  }
+if (search) {
+  const query = search.toLowerCase();
+
+  movies = movies.filter((m) => {
+    if (!m.title || typeof m.title !== "string") return false;
+    return m.title.toLowerCase().includes(query);
+  });
+}
 
   // filter by genre
   if (genre) {
