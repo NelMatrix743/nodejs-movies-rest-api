@@ -49,6 +49,7 @@ export const createMovie = (movieData) => {
   return { id: newId, ...movies[newId] };
 };
 
+
 // Update movie
 export const updateMovie = (id, updatedData) => {
   if (!movies[id]) return null;
