@@ -3,7 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import swaggerUi from "swagger-ui-express";
-import swaggerSpec from "./docs/swagger.js";
+import swaggerSpec from "./docs/swagger.config.js";
 
 import movieRoutes from "./routes/movies.routes.js";
 
