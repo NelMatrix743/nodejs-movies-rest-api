@@ -2,15 +2,23 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 
+import movieRoutes from "./routes/movies.routes.js";
+
 
 const app = express();
 
-app.use(express.json());
-app.use(morgan("dev"));
-app.use(cors());
+app.use(express.json()); // parse JSON request bodies
+app.use(morgan("dev")); // log HTTP requests
+app.use(cors()); // allow cross-origin requests
+
+
+// API routes section
+app.use("/api/movies", movieRoutes);
 
 const BASE_RESPONSE = `
-	<h1 style='font-family:consolas; font-size: 100px;'>Hello, World!</h1>
+	<h1 style='width: 100%;font-family:consolas;font-size: 90px;text-align: center;padding: 50px 10px;'>
+    MOVIES REST API
+  </h1>
 `;
 
 app.get('/', (req, res) => {
