@@ -1,6 +1,7 @@
 import * as service from "../services/movies.service.js";
 
 
+
 // convert object → array
 const formatMovies = (moviesObj) => {
   return Object.entries(moviesObj).map(([id, data]) => ({
@@ -81,6 +82,19 @@ export const updateMovie = (req, res) => {
   res.json(updated);
 };
 
+
+// DELETE /api/movies/:id
+export const deleteMovie = (req, res) => {
+  const { id } = req.params;
+
+  const deleted = service.deleteMovie(id);
+
+  if (!deleted) {
+    return res.status(404).json({ message: "Movie not found" });
+  }
+
+  res.json({ message: "Movie deleted successfully" });
+};
 
 
 
