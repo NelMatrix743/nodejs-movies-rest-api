@@ -60,5 +60,13 @@ export const getMovie = (req, res) => {
 };
 
 
+// POST /api/movies
+export const createMovie = (req, res) => {
+  const newMovie = service.createMovie(req.body);
+
+  res.status(201).json(newMovie);
+};
+
+
 
 // EOSC
