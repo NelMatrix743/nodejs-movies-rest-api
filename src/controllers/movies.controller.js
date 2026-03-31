@@ -68,5 +68,20 @@ export const createMovie = (req, res) => {
 };
 
 
+// PUT /api/movies/:id
+export const updateMovie = (req, res) => {
+  const { id } = req.params;
+
+  const updated = service.updateMovie(id, req.body);
+
+  if (!updated) {
+    return res.status(404).json({ message: "Movie not found" });
+  }
+
+  res.json(updated);
+};
+
+
+
 
 // EOSC
