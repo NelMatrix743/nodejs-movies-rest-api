@@ -19,6 +19,15 @@ const generateId = () => {
   return String(maxId + 1);
 };
 
+// Get all movies
+export const getAllMovies = () => movies;
+
+
+// Get movie by ID
+export const getMovieById = (id) => {
+  return movies[id] || null;
+};
+
 
 
 // ESOC
