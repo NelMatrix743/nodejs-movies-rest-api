@@ -3,3 +3,7 @@ node_modules/
 
 # Brain storming
 brainstorming.txt
+
+# Git, stop tracking the database please!
+database/
+
