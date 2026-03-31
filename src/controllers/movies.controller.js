@@ -46,5 +46,19 @@ export const getMovies = (req, res) => {
 };
 
 
+// GET /api/movies/:id
+export const getMovie = (req, res) => {
+  const { id } = req.params;
+
+  const movie = service.getMovieById(id);
+
+  if (!movie) {
+    return res.status(404).json({ message: "Movie not found" });
+  }
+
+  res.json({ id, ...movie });
+};
+
+
 
 // EOSC
