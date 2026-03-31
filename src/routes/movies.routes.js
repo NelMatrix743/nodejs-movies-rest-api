@@ -105,13 +105,42 @@ router.post("/", validate(createMovieSchema), controller.createMovie);
  * /api/movies/{id}:
  *   put:
  *     summary: Update a movie
- *     description: Update an already existing movie metadata
+ *     description: Update the fields of an already existing movie metadata
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               release_year:
+ *                 type: number
+ *               age_certification:
+ *                 type: string
+ *               runtime:
+ *                 type: number
+ *               genres:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               production_countries:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *               seasons:
+ *                 type: string
+ *               imdb_score:
+ *                 type: number
+ *               imdb_votes:
+ *                 type: number
  *     responses:
  *       200:
  *         description: Movie updated
