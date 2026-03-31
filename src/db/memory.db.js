@@ -63,5 +63,14 @@ export const updateMovie = (id, updatedData) => {
 };
 
 
+// Delete movie
+export const deleteMovie = (id) => {
+  if (!movies[id]) return false;
+
+  delete movies[id];
+  writeData(movies);
+  return true;
+};
+
 
 // ESOC
