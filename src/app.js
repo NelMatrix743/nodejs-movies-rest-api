@@ -16,9 +16,12 @@ app.use(cors()); // allow cross-origin requests
 app.use("/api/movies", movieRoutes);
 
 const BASE_RESPONSE = `
-	<h1 style='width: 100%;font-family:consolas;font-size: 90px;text-align: center;padding: 50px 10px;'>
+	<h1 style='width: 100%;font-family:consolas;font-size: 90px;text-align: center;padding: 50px 10px 0px;'>
     MOVIES REST API
   </h1>
+  <p style="font-family:consolas;font-weight: 800;text-align:center;">
+  SERVER STATUS: <span style="color: white; background: green; padding: 10px 20px; border-radius: 10px">ACTIVE</span>
+  </p>
 `;
 
 app.get('/', (req, res) => {
