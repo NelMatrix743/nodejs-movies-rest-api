@@ -15,6 +15,15 @@ app.use(cors()); // allow cross-origin requests
 // API routes section
 app.use("/api/movies", movieRoutes);
 
+
+// 404 Handler for unknown routes
+app.use((req, res) => {
+  res.status(404).json({
+    message: "Route not found",
+  });
+});
+
+
 const BASE_RESPONSE = `
 	<h1 style='width: 100%;font-family:consolas;font-size: 90px;text-align: center;padding: 50px 10px 0px;'>
     MOVIES REST API
