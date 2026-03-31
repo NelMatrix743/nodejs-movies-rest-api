@@ -39,6 +39,8 @@ const BASE_RESPONSE = `
   </p>
 `;
 
+
+// Base/Root endpoint
 app.get('/', (req, res) => {
   res.send(BASE_RESPONSE);
 });
